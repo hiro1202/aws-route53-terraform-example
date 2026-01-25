@@ -4,17 +4,12 @@
 # Visual Studio profiler
 *.vs
 
-# bin, settings
-temp
-env.sh
-
 # Terraform
 **/.terraform/*
 *.tfstate
 *.tfstate.*
 *.tfvars
 *.log
-.terraform.lock.hcl
 *.tfbackend
 
 # tfsec
