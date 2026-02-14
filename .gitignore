@@ -17,3 +17,6 @@ tfsec-junit.xml
 
 # asdf
 .tool-versions
+
+# claude
+.claude

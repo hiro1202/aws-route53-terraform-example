@@ -1,5 +1,9 @@
 # aws-route53-terraform-example
 
+## アーキテクチャ
+
+![アーキテクチャ](./docs/architecture.drawio.png)
+
 ## ディレクトリ構成
 
 ```
