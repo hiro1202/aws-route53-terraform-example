@@ -22,21 +22,18 @@
 │               ├── ap-northeast-1
 │               ├── ap-northeast-3
 │               └── global
-├── modules
-│   ├── network
-│   ├── ram
-│   └── route53
-│       ├──  hosted-zone
-│       │   ├── private-hosted-zone
-│       │   ├── public-hosted-zone
-│       │   ├── record
-│       │   │   ├── a-record
-│       │   │   └── ailias-record
-│       │   └── zone-association
-│       └──  resolver
-│           ├── endpoint
-│           ├── rule
-│           └── rule-association
-└── templates
-    └── ...
+└── modules
+    ├── ram
+    └── route53
+        ├── hosted-zone
+        │   ├── private-hosted-zone
+        │   ├── public-hosted-zone
+        │   ├── record
+        │   │   ├── a-record
+        │   │   └── ailias-record
+        │   └── zone-association
+        └── resolver
+            ├── endpoint
+            ├── rule
+            └── rule-association
 ```
