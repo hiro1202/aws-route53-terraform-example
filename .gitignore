@@ -20,3 +20,6 @@ tfsec-junit.xml
 
 # claude
 .claude
+
+# macOS
+.DS_Store
