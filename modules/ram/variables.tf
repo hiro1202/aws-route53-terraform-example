@@ -4,11 +4,11 @@ variable "resource_share_name" {
 }
 
 variable "shared_resource_arn" {
-  type = string
+  type        = string
   description = "共有するリソースのARN"
 }
 
 variable "target_account_id" {
-  type = string
+  type        = string
   description = "共有先のアカウントID"
 }

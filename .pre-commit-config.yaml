@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+        files: ^teams/platform/env/test/ap-northeast-1/
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.105.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+        files: ^teams/platform/env/test/ap-northeast-1/
+      - id: terraform_tflint
+        files: ^teams/platform/env/test/ap-northeast-1/
