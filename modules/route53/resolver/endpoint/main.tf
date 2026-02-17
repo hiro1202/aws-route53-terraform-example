@@ -1,6 +1,7 @@
 resource "aws_route53_resolver_endpoint" "main" {
-  name      = var.endpoint_name
-  direction = var.direction
+  name                   = var.endpoint_name
+  direction              = var.direction
+  resolver_endpoint_type = var.resolver_endpoint_type
 
   security_group_ids = [
     aws_security_group.main.id,

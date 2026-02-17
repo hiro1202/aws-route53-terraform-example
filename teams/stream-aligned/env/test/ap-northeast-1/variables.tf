@@ -13,7 +13,8 @@ variable "aws_region" {
 
 # ------- Terraform の基本設定 -------
 variable "env" {
-  type = string
+  type        = string
+  description = "デプロイ先の環境名 (test, prod など)"
 }
 
 variable "prefix" {
@@ -32,7 +33,17 @@ variable "resolver_endpoint_direction" {
 
   validation {
     condition     = var.resolver_endpoint_direction == "INBOUND" || var.resolver_endpoint_direction == "OUTBOUND"
-    error_message = "resolver_endpoint_direction must be either INBOUND or OUTBOUND."
+    error_message = "resolver_endpoint_direction は INBOUND または OUTBOUND のいずれかを指定してください。"
+  }
+}
+
+variable "resolver_endpoint_type" {
+  type        = string
+  description = "Resolver Endpoint のプロトコルタイプ (IPV4, IPV6, DUALSTACK)"
+
+  validation {
+    condition     = contains(["IPV4", "IPV6", "DUALSTACK"], var.resolver_endpoint_type)
+    error_message = "resolver_endpoint_type は IPV4, IPV6, DUALSTACK のいずれかを指定してください。"
   }
 }
 
@@ -42,7 +53,7 @@ variable "resolver_endpoint_subnet_ids" {
 
   validation {
     condition     = length(var.resolver_endpoint_subnet_ids) >= 2
-    error_message = "resolver_endpoint_subnet_ids must contain at least 2 subnet IDs."
+    error_message = "resolver_endpoint_subnet_ids には最低 2 つのサブネット ID を指定してください。"
   }
 }
 
@@ -53,6 +64,6 @@ variable "resolver_endpoint_ip_addresses" {
 
   validation {
     condition     = length(var.resolver_endpoint_ip_addresses) == 0 || length(var.resolver_endpoint_ip_addresses) == length(var.resolver_endpoint_subnet_ids)
-    error_message = "resolver_endpoint_ip_addresses must be empty or match resolver_endpoint_subnet_ids length."
+    error_message = "resolver_endpoint_ip_addresses は空配列か、resolver_endpoint_subnet_ids と同じ要素数を指定してください。"
   }
 }

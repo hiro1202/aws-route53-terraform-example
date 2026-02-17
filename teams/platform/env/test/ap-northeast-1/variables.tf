@@ -11,5 +11,6 @@ variable "aws_region" {
 }
 
 variable "env" {
-  type = string
+  type        = string
+  description = "デプロイ先の環境名 (test, prod など)"
 }
