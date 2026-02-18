@@ -22,9 +22,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    strategy:
+      fail-fast: false
+      matrix:
+        working-directory:
+          - modules/route53/resolver/endpoint
+          - teams/platform/env/test/ap-northeast-1
+
     defaults:
       run:
-        working-directory: teams/platform/env/test/ap-northeast-1
+        working-directory: ${{ matrix.working-directory }}
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +44,7 @@ jobs:
         run: terraform fmt -check -recursive -diff
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -backend=false
 
       - name: Terraform Validate
         run: terraform validate
