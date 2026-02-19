@@ -1,17 +1,17 @@
-.PHONY: test test-modules test-integration
+.PHONY: test test-modules test-module-resolver-endpoint test-root-modules test-root-module-platform
 
-test: test-modules test-integration
+test: test-modules test-root-modules
 
-# --- モジュール単体テスト ---
+# --- 子モジュールテスト ---
 test-modules: test-module-resolver-endpoint
 
 test-module-resolver-endpoint:
 	terraform -chdir=modules/route53/resolver/endpoint init -backend=false
 	terraform -chdir=modules/route53/resolver/endpoint test
 
-# --- 結合テスト ---
-test-integration: test-integration-platform
+# --- ルートモジュールテスト ---
+test-root-modules: test-root-module-platform
 
-test-integration-platform:
+test-root-module-platform:
 	terraform -chdir=teams/platform/env/test/ap-northeast-1 init -backend=false
 	terraform -chdir=teams/platform/env/test/ap-northeast-1 test
