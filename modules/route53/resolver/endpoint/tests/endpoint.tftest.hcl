@@ -1,8 +1,12 @@
+test {
+  parallel = true
+}
+
 mock_provider "aws" {}
 
 # --- INBOUND のとき direction が INBOUND になること ---
 run "inbound_direction" {
-  command = plan
+  command = apply
 
   variables {
     direction           = "INBOUND"
@@ -20,7 +24,7 @@ run "inbound_direction" {
 
 # --- OUTBOUND のとき direction が OUTBOUND になること ---
 run "outbound_direction" {
-  command = plan
+  command = apply
 
   variables {
     direction           = "OUTBOUND"
@@ -38,7 +42,7 @@ run "outbound_direction" {
 
 # --- resolver_endpoint_type のデフォルトが IPV4 であること ---
 run "default_endpoint_type_is_ipv4" {
-  command = plan
+  command = apply
 
   variables {
     direction           = "INBOUND"
@@ -56,7 +60,7 @@ run "default_endpoint_type_is_ipv4" {
 
 # --- resolver_endpoint_type に DUALSTACK を指定できること ---
 run "dualstack_endpoint_type" {
-  command = plan
+  command = apply
 
   variables {
     direction              = "INBOUND"

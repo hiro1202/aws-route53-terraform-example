@@ -12,7 +12,7 @@ variables {
   env         = "test"
 }
 
-# --- plan が正常に通ることを確認するスモークテスト ---
-run "plan_succeeds" {
-  command = plan
+# --- apply が正常に通ることを確認 ---
+run "apply_succeeds" {
+  command = apply
 }
