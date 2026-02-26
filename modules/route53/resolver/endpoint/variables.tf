@@ -1,5 +1,6 @@
 variable "direction" {
-  type = string
+  type        = string
+  description = "エンドポイントの方向。INBOUND または OUTBOUND を指定する。"
 
   validation {
     condition     = var.direction == "INBOUND" || var.direction == "OUTBOUND"
@@ -8,15 +9,18 @@ variable "direction" {
 }
 
 variable "endpoint_name" {
-  type = string
+  type        = string
+  description = "Resolverエンドポイントの名前"
 }
 
 variable "vpc_id" {
-  type = string
+  type        = string
+  description = "エンドポイントを配置するVPCのID"
 }
 
 variable "subnet_ids" {
-  type = list(string)
+  type        = list(string)
+  description = "エンドポイントのENIを配置するサブネットIDのリスト。最低2つ必要。"
 
   validation {
     condition     = length(var.subnet_ids) >= 2
@@ -25,8 +29,9 @@ variable "subnet_ids" {
 }
 
 variable "ip_addresses" {
-  type    = list(string)
-  default = []
+  type        = list(string)
+  description = "エンドポイントに割り当てるIPアドレスのリスト。空の場合はAWSが自動割り当て。subnet_idsと同じ要素数が必要。"
+  default     = []
 
   validation {
     condition     = length(var.ip_addresses) == 0 || length(var.ip_addresses) == length(var.subnet_ids)
@@ -35,8 +40,9 @@ variable "ip_addresses" {
 }
 
 variable "resolver_endpoint_type" {
-  type    = string
-  default = "IPV4"
+  type        = string
+  description = "エンドポイントのIPアドレスタイプ。IPV4、IPV6、DUALSTACK のいずれかを指定する。"
+  default     = "IPV4"
 
   validation {
     condition     = contains(["IPV4", "IPV6", "DUALSTACK"], var.resolver_endpoint_type)
@@ -45,7 +51,8 @@ variable "resolver_endpoint_type" {
 }
 
 variable "allowed_cidr_blocks" {
-  type = list(string)
+  type        = list(string)
+  description = "エンドポイントへのアクセスを許可するCIDRブロックのリスト。最低1つ必要。"
 
   validation {
     condition     = length(var.allowed_cidr_blocks) > 0

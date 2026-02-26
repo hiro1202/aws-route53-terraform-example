@@ -2,9 +2,10 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
+      - id: check-merge-conflict
       - id: end-of-file-fixer
-        files: ^teams/platform/env/test/ap-northeast-1/
-
+      - id: trailing-whitespace
+      - id: mixed-line-ending
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.105.0
     hooks:
@@ -12,4 +13,6 @@ repos:
       - id: terraform_validate
         files: ^teams/platform/env/test/ap-northeast-1/
       - id: terraform_tflint
-        files: ^teams/platform/env/test/ap-northeast-1/
+        files: ^(teams/platform/env/test/ap-northeast-1|modules)/
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
