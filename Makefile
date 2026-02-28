@@ -1,4 +1,9 @@
-.PHONY: test test-modules test-module-resolver-endpoint test-root-modules test-root-module-platform
+.PHONY: lint checkov test test-modules test-module-resolver-endpoint test-root-modules test-root-module-platform
+
+lint: checkov
+
+checkov:
+	checkov -d .
 
 test: test-modules test-root-modules
 

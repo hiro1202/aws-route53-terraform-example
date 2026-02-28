@@ -11,8 +11,12 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
-        files: ^teams/platform/env/test/ap-northeast-1/
+        files: ^(teams/platform/env/test/ap-northeast-1|modules)/
       - id: terraform_tflint
         files: ^(teams/platform/env/test/ap-northeast-1|modules)/
         args:
           - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+      - id: terraform_checkov
+        files: ^(teams/platform/env/test/ap-northeast-1|modules)/
+        args:
+          - --args=--no-cert-verify

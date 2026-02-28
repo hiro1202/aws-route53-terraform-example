@@ -22,5 +22,8 @@ tfsec-junit.xml
 # claude
 .claude
 
+# checkov
+.external_modules/
+
 # macOS
 .DS_Store
