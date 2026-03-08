@@ -10,8 +10,11 @@ download-external-modules: true
 # Prisma Cloud からデータをダウンロードしない
 skip-download: true
 
-# SSL証明書の検証をスキップ
-no-cert-verify: true
+# スキップするチェック
+skip-check:
+  - CKV2_AWS_38 # Route 53 パブリックゾーンの DNSSEC: 運用要件に含まないため除外
+  - CKV2_AWS_39 # Route 53 の DNS クエリログ: 運用要件に含まないため除外
+  - CKV2_AWS_23 # A レコードのリソース紐付け: 汎用モジュールのため検証対象外
 
 # 失敗したチェックのみを出力する
 quiet: true

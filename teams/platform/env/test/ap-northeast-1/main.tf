@@ -1,5 +1,5 @@
 module "network" {
-  source = "github.com/hirokazufunaki/terraform-aws-network?ref=v1.0.0"
+  source = "github.com/hirokazufunaki/terraform-aws-network?ref=87d858e703d4f911c52c6a102674dd135d921924" # v1.0.0
 
   name            = "platform"
   vpc_cidr        = "10.0.0.0/16"
