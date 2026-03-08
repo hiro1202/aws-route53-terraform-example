@@ -1,6 +1,10 @@
-.PHONY: lint checkov test test-modules test-module-resolver-endpoint test-root-modules test-root-module-platform
+.PHONY: fmt tflint checkov test test-modules test-module-resolver-endpoint test-root-modules test-root-module-platform
 
-lint: checkov
+fmt:
+	terraform fmt -recursive -diff
+
+tflint:
+	tflint --init && tflint --recursive
 
 checkov:
 	checkov -d .
