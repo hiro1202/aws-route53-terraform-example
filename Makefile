@@ -4,7 +4,7 @@ fmt:
 	terraform fmt -recursive -diff
 
 tflint:
-	tflint --init && tflint --recursive
+	tflint --init && tflint --recursive --config $(CURDIR)/.tflint.hcl
 
 checkov:
 	checkov -d .
