@@ -25,5 +25,8 @@ tfsec-junit.xml
 # checkov
 .external_modules/
 
+# trivy
+.trivy
+
 # macOS
 .DS_Store

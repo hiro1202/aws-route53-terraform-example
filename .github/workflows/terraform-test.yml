@@ -46,6 +46,12 @@ jobs:
         with:
           directory: .
 
+      - name: Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: config
+          scan-ref: .
+
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 10
