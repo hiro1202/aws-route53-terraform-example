@@ -14,5 +14,3 @@ variable "env" {
   type        = string
   description = "デプロイ先の環境名 (test, prod など)"
 }
-
-

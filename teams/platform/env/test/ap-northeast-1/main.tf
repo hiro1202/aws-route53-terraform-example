@@ -15,3 +15,23 @@ module "resolver_endpoint" {
   subnet_ids          = module.network.private_subnet_ids
   allowed_cidr_blocks = ["10.0.0.0/16"]
 }
+
+module "resolver_outbound_endpoint" {
+  source = "../../../../../modules/route53/resolver/endpoint"
+
+  direction           = "OUTBOUND"
+  endpoint_name       = "example-outbound"
+  vpc_id              = module.network.vpc_id
+  subnet_ids          = module.network.private_subnet_ids
+  allowed_cidr_blocks = ["10.0.0.0/16"]
+}
+
+module "resolver_rule" {
+  source = "../../../../../modules/route53/resolver/rule"
+
+  rule_name            = "example"
+  rule_type            = "FORWARD"
+  domain_name          = "example.com"
+  target_ips           = ["192.168.1.1", "192.168.1.2"]
+  outbound_endpoint_id = module.resolver_outbound_endpoint.endpoint_id
+}

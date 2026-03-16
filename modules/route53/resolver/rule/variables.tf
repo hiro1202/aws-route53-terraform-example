@@ -10,7 +10,12 @@ variable "domain_name" {
 
 variable "rule_type" {
   type        = string
-  description = "ルールのタイプ。FORWARD または SYSTEM を指定する。"
+  description = "Resolver ルールのタイプ"
+
+  validation {
+    condition     = contains(["FORWARD", "SYSTEM", "RECURSIVE"], var.rule_type)
+    error_message = "rule_type は FORWARD、SYSTEM、RECURSIVE のいずれかを指定してください。"
+  }
 }
 
 variable "target_ips" {

@@ -9,7 +9,8 @@ mock_provider "aws" {
 variables {
   aws_profile = "default"
   aws_region  = "ap-northeast-1"
-  env         = "test"
+  env                      = "test"
+  resolver_rule_target_ips = ["192.168.1.1"]
 }
 
 # --- apply が正常に通ることを確認 ---
