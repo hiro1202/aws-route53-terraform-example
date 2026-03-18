@@ -1,4 +1,4 @@
-# Hybrid DNS Infrastructure with Terraform
+# aws-route53-terraform-example
 
 オンプレミス環境と AWS 環境間の名前解決を実現する DNS 基盤の Terraform コードです。
 
